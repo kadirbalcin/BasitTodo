@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity,ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity,ScrollView, Alert } from 'react-native';
 import ItemList from './ItemList';
 
 export default class App extends Component {
@@ -15,8 +15,18 @@ export default class App extends Component {
 
   handleSave = () => {
     const { text, data } = this.state;
-    data.push({text});
-    this.setState( {data, text:''} );
+    if(text != "") {
+      data.push({text});
+      this.setState( {data, text:''} );
+    }else {
+      Alert.alert(
+        "Hata",
+        "Mesaj alanı boş olamaz.",
+        [
+          { text: "Tamam"}
+        ]
+      );
+    }
   };
 
   render() {
@@ -26,6 +36,7 @@ export default class App extends Component {
         <View style={styles.title}><Text style={styles.title_text}>To-Do Application</Text></View>
         <View style={{ backgroundColor: '#ddd', padding: 10, flexDirection: 'row' }}>
           <TextInput
+            placeholder="Görev Giriniz"
             style={styles.input}
             value={text}
             onChangeText={(text)=>{this.setState({text})}}
