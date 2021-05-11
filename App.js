@@ -33,6 +33,7 @@ export default class App extends Component {
     const { text, data } = this.state;
     return (
       <View style={[{flex:1, paddingTop:30}]}>
+        <StatusBar/>
         <View style={styles.title}><Text style={styles.title_text}>To-Do Application</Text></View>
         <View style={{ backgroundColor: '#ddd', padding: 10, flexDirection: 'row' }}>
           <TextInput
