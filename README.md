@@ -1,2 +1,2 @@
 # BasitTodo
-Kadir Balçın React Denemeleri
+Kadir Balçın React-Native Denemeleri
